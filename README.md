@@ -4,6 +4,8 @@
 ## Overview
 This project focuses on building a deepfake detection system that emphasizes privacy preservation through the use of Fully Homomorphic Encryption (FHE). The system allows for deepfake detection on encrypted data, ensuring that sensitive information remains private throughout the process.
 
+<img width="1513" alt="image" src="https://github.com/user-attachments/assets/0ec21ce1-8b20-4b74-ad9e-547bad7c9327">
+
 ## Key Features
 - **Deepfake Detection**: Machine learning model with 96% accuracy.
 - **Privacy Focused**: Fully Homomorphic Encryption (FHE) allows computations on encrypted data, maintaining full user privacy.
