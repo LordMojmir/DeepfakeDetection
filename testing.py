@@ -8,6 +8,7 @@ from sklearn.metrics import confusion_matrix
 import numpy as np
 from custom_resnet import resnet18_custom
 
+
 def main():
     train_dir = 'data/Train'
     val_dir = 'data/Validation'
@@ -67,8 +68,21 @@ def main():
     # Load the trained model weights
     model.load_state_dict(torch.load('models/deepfake_detection_model.pth'))
 
+    # Print parameter sizes
+    print_model_param_sizes(model)
+
     # Run the test evaluation
     evaluate_model(model, dataloaders['test'], device, class_names)
+
+
+def print_model_param_sizes(model):
+    """Print the total number of parameters and trainable parameters in the model."""
+    total_params = sum(p.numel() for p in model.parameters())
+    trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+
+    print(f"Total parameters: {total_params}")
+    print(f"Trainable parameters: {trainable_params}")
+
 
 def evaluate_model(model, test_loader, device, class_names):
     model.eval()
@@ -109,6 +123,7 @@ def evaluate_model(model, test_loader, device, class_names):
     print(f"Recall: {recall:.4f}")
     print(f"F1 Score: {f1_score:.4f}")
 
+
 def predict(image_path, model, transform, device, class_names):
     model.eval()
     img = Image.open(image_path).convert('RGB')  # Ensure image is in RGB format
@@ -120,6 +135,7 @@ def predict(image_path, model, transform, device, class_names):
         _, preds = torch.max(outputs, 1)
 
     return class_names[preds[0]]
+
 
 if __name__ == '__main__':
     main()
