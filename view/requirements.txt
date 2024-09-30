@@ -1,0 +1,5 @@
+gradio
+torch
+torchvision
+Pillow
+concrete-ml==1.6.1
