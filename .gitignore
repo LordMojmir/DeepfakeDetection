@@ -2,3 +2,5 @@
 *.pth
 /data
 /models
+.idea
+.DS_Store
